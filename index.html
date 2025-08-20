@@ -152,6 +152,7 @@
             cursor: not-allowed;
             transform: none;
             box-shadow: none;
+            opacity: 0.6;
         }
 
         .slide-counter {
@@ -279,16 +280,30 @@
         const slides = document.querySelectorAll('.slide');
         const totalSlides = slides.length;
         
-        document.getElementById('totalSlides').textContent = totalSlides;
+        // 安全にtotalSlidesを設定
+        const totalSlidesElement = document.getElementById('totalSlides');
+        if (totalSlidesElement) {
+            totalSlidesElement.textContent = totalSlides;
+        }
 
         function showSlide(index) {
             slides.forEach((slide, i) => {
                 slide.classList.toggle('active', i === index);
             });
             
-            document.getElementById('currentSlide').textContent = index + 1;
-            document.getElementById('prevBtn').disabled = index === 0;
-            document.getElementById('nextBtn').disabled = index === totalSlides - 1;
+            const currentSlideElement = document.getElementById('currentSlide');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            if (currentSlideElement) {
+                currentSlideElement.textContent = index + 1;
+            }
+            if (prevBtn) {
+                prevBtn.disabled = index === 0;
+            }
+            if (nextBtn) {
+                nextBtn.disabled = index === totalSlides - 1;
+            }
         }
 
         function changeSlide(direction) {
@@ -308,8 +323,15 @@
             }
         });
 
-        // 初期化
-        showSlide(0);
+        // 初期化 - DOMが完全に読み込まれた後に実行
+        document.addEventListener('DOMContentLoaded', function() {
+            showSlide(0);
+        });
+        
+        // ページ読み込み完了時にも実行（保険）
+        window.addEventListener('load', function() {
+            showSlide(0);
+        });
     </script>
 </body>
 </html>
