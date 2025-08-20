@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>未来を創る、一球のために。 - 享栄高校硬式野球部OB・OG会</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Meiryo', 'メイリオ', 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', sans-serif;
+            background: #f5f5f5;
+            color: #192a56;
+            overflow: hidden;
+        }
+
+        .slideshow-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            background: white;
+        }
+
+        .slide {
+            display: none;
+            padding: 60px 80px 120px 80px;
+            text-align: center;
+            height: 100vh;
+            position: relative;
+            animation: fadeIn 0.5s ease-in;
+            overflow-y: auto;
+        }
+
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: #192a56;
+            margin-bottom: 40px;
+            line-height: 1.3;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            font-size: 2.8rem;
+            font-weight: bold;
+            color: #192a56;
+            margin-bottom: 30px;
+            line-height: 1.3;
+        }
+
+        .content {
+            font-size: 1.8rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            max-width: 1200px;
+        }
+
+        .content p {
+            margin-bottom: 25px;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #c8d6ff, #f1f4ff);
+            padding: 20px 30px;
+            border-radius: 15px;
+            margin: 20px 0;
+            font-weight: bold;
+            border-left: 8px solid #192a56;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .highlight-red {
+            background: linear-gradient(135deg, #ffcccc, #ffe6e6);
+            padding: 20px 30px;
+            border-radius: 15px;
+            margin: 20px 0;
+            font-weight: bold;
+            border-left: 8px solid #dc3545;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            color: #dc3545;
+        }
+
+        .points {
+            text-align: left;
+            margin: 40px auto;
+            max-width: 1000px;
+        }
+
+        .points li {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            padding-left: 20px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .points li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            color: #192a56;
+            font-weight: bold;
+        }
+
+        .navigation {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .nav-button {
+            background: #192a56;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .nav-button:hover {
+            background: #2f3542;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .nav-button:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .slide-counter {
+            background: rgba(25, 42, 86, 0.8);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin: 0 10px;
+        }
+
+        .emoji-icon {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .slide {
+                padding: 40px 20px 100px 20px;
+            }
+            
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            .content { font-size: 1.4rem; }
+            .points li { font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="slideshow-container">
+        <!-- スライド1: タイトル -->
+        <div class="slide active">
+            <h1>享栄高校硬式野球部OB・OG会</h1>
+        </div>
+
+        <!-- スライド2: 私たちの使命 -->
+        <div class="slide">
+            <h2>OB・OG会の使命</h2>
+            <div class="content">
+                <div class="highlight">
+                    現役選手が甲子園という夢の舞台に立つための、最高の環境を整えること
+                </div>
+                <p>理想だけでは部は強くならない。精神的な応援も大切ですが、最新のバット一本、怪我を防ぐトレーニング機器一台が、試合の勝敗を分ける現実があります。</p>
+                <p><strong>私たちOB・OG一人ひとりの会費や寄付が、その一本、その一台に変わり、選手たちの夢を直接支える力となるのです。</strong></p>
+            </div>
+        </div>
+
+        <!-- スライド3: なぜ資金サポートが最重要なのか -->
+        <div class="slide">
+            <h2>なぜ資金サポートが最重要なのか</h2>
+            <div class="content">
+                <div class="highlight-red">
+                    <div style="font-size: 2rem; margin-bottom: 20px;">現役選手への直接的な資金支援</div>
+                    <p>これこそが私たちの最も重要な役割です。最新のトレーニング機材、質の高いボール・バット、栄養サプリメント、遠征費用、コンディション管理機器 — これらすべてが選手のパフォーマンス向上に直結します。</p>
+                    <p style="font-size: 2.2rem; color: #dc3545; font-weight: bold;">あなたの年会費5,000円が、200人が参加すれば100万円の強化資金となります。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド4: その他の重要な役割 -->
+        <div class="slide">
+            <h2>その他の重要な役割</h2>
+            <div class="content">
+                <ul class="points">
+                    <li><strong>指導者との戦略的連携</strong><br>監督・コーチとの密接な情報共有により、本当に必要な設備投資を見極め、無駄のない効果的な資金活用を実現</li>
+                    <li><strong>勝利への伝統継承</strong><br>享栄野球部の「勝つための文化」を次世代に伝承。過去の成功体験を基に、現代に通用する戦略的投資を実行</li>
+                    <li><strong>資金調達ネットワーク構築</strong><br>様々な業界で活躍するOB・OGの力を結集し、持続可能な部活動運営のための資金基盤を構築</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- スライド5: 参加することで得られる価値 -->
+        <div class="slide">
+            <h2>参加することで得られる価値</h2>
+            <div class="content">
+                <div class="highlight" style="margin: 15px 0; padding: 15px 20px;">
+                    <p style="font-size: 1.6rem; margin-bottom: 10px;"><strong>後輩たちの夢を直接サポートできる最高のやりがい</strong></p>
+                </div>
+                <ul class="points" style="margin: 20px auto; font-size: 1.4rem;">
+                    <li style="margin-bottom: 15px;"><strong>強固な人脈ネットワーク</strong> - 同窓生との貴重な出会い</li>
+                    <li style="margin-bottom: 15px;"><strong>野球への情熱継続</strong> - 現役時代の情熱維持と勝利の共有</li>
+                    <li style="margin-bottom: 15px;"><strong>母校の栄光への貢献</strong> - 母校発展を間近で見守る特権</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- スライド6: 資金活用の透明性と効果 -->
+        <div class="slide">
+            <h2>資金活用の透明性と効果</h2>
+            <div class="content">
+                <ul class="points" style="margin: 30px auto; font-size: 1.4rem;">
+                    <li style="margin-bottom: 20px;"><strong>予算の透明な運営</strong> - 年1回の総会で詳細報告、一円まで明確化</li>
+                    <li style="margin-bottom: 20px;"><strong>戦略的な資金投資</strong> - 監督・コーチとの協議で効果的な機材に集中投資</li>
+                    <li style="margin-bottom: 20px;"><strong>選手強化への直接投資</strong> - トレーニング機材、栄養管理、遠征費、最新用具購入</li>
+                    <li style="margin-bottom: 20px;"><strong>成果を共有する交流</strong> - 投資成果を実感できる懇親会や試合観戦会を開催</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- スライド7: 最終メッセージ -->
+        <div class="slide">
+            <h1>あなたの支援が、<br>未来の一打を創る。</h1>
+            <div class="content">
+                <div class="highlight">
+                    <p style="font-size: 2.2rem; margin-bottom: 20px;"><strong>一緒に母校の黄金時代を築きましょう。</strong></p>
+                    <p style="font-size: 1.8rem;">年会費5,000円から始められます。</p>
+                    <p style="font-size: 1.8rem;">あなたの支援が選手たちの汗と努力と組み合わさって、必ず甲子園への道を切り拓きます。</p>
+                </div>
+                <p style="font-style: italic; font-size: 2rem; margin-top: 30px; color: #192a56;">「理想だけでは勝てない。でも、みんなの力が集まれば必ず勝てる。」</p>
+            </div>
+        </div>
+
+        <!-- ナビゲーション -->
+        <div class="navigation">
+            <button class="nav-button" id="prevBtn" onclick="changeSlide(-1)">◀ 前へ</button>
+            <div class="slide-counter">
+                <span id="currentSlide">1</span> / <span id="totalSlides">7</span>
+            </div>
+            <button class="nav-button" id="nextBtn" onclick="changeSlide(1)">次へ ▶</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        
+        document.getElementById('totalSlides').textContent = totalSlides;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+            
+            document.getElementById('currentSlide').textContent = index + 1;
+            document.getElementById('prevBtn').disabled = index === 0;
+            document.getElementById('nextBtn').disabled = index === totalSlides - 1;
+        }
+
+        function changeSlide(direction) {
+            const newIndex = currentSlideIndex + direction;
+            if (newIndex >= 0 && newIndex < totalSlides) {
+                currentSlideIndex = newIndex;
+                showSlide(currentSlideIndex);
+            }
+        }
+
+        // キーボードナビゲーション
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                changeSlide(-1);
+            } else if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                changeSlide(1);
+            }
+        });
+
+        // 初期化
+        showSlide(0);
+    </script>
+</body>
+</html>
