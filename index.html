@@ -3,358 +3,313 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>未処理品番 処理進捗報告</title>
+    <title>未来を創る、一球のために。 - 享栄高校硬式野球部OB・OG会</title>
     <style>
-        body {
-            font-family: 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif;
+        * {
             margin: 0;
-            padding: 20px;
-            background-color: #f8f9fa;
-            color: #333;
-            line-height: 1.6;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        .page {
-            max-width: 1200px;
-            margin: 0 auto;
+        body {
+            font-family: 'Meiryo', 'メイリオ', 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', sans-serif;
+            background: #f5f5f5;
+            color: #192a56;
+            overflow: hidden;
+        }
+
+        .slideshow-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
             background: white;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
-            page-break-after: always;
+        }
+
+        .slide {
+            display: none;
+            padding: 60px 80px 120px 80px;
+            text-align: center;
+            height: 100vh;
+            position: relative;
+            animation: fadeIn 0.5s ease-in;
+            overflow-y: auto;
+        }
+
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
         h1 {
-            text-align: center;
-            color: #2c3e50;
-            margin-bottom: 10px;
-            font-size: 28px;
-            border-bottom: 3px solid #3498db;
-            padding-bottom: 10px;
-        }
-
-        .summary {
-            background-color: #e8f4f8;
-            padding: 20px;
-            border-left: 4px solid #3498db;
-            margin: 20px 0;
-            font-size: 16px;
-        }
-
-        .key-result {
-            font-size: 18px;
+            font-size: 3.5rem;
             font-weight: bold;
-            color: #e74c3c;
-            text-align: center;
-            margin: 15px 0;
+            color: #192a56;
+            margin-bottom: 40px;
+            line-height: 1.3;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
 
-        .chart-container {
-            margin: 30px 0;
-            text-align: center;
-        }
-
-        .chart-title {
-            font-size: 18px;
+        h2 {
+            font-size: 2.8rem;
             font-weight: bold;
-            margin-bottom: 15px;
-            color: #2c3e50;
+            color: #192a56;
+            margin-bottom: 30px;
+            line-height: 1.3;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            font-size: 14px;
+        .content {
+            font-size: 1.8rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            max-width: 1200px;
         }
 
-        th {
-            background-color: #3498db;
-            color: white;
-            padding: 12px 8px;
-            text-align: center;
-            font-weight: bold;
-        }
-
-        td {
-            padding: 10px 8px;
-            text-align: center;
-            border-bottom: 1px solid #ddd;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-
-        tr:last-child {
-            background-color: #fff3cd;
-            font-weight: bold;
-        }
-
-        .analysis {
-            margin: 30px 0;
-            padding: 20px;
-            background-color: #f8f9fa;
-            border-radius: 5px;
-        }
-
-        .analysis h3 {
-            color: #2c3e50;
-            margin-bottom: 15px;
-        }
-
-        .analysis ul {
-            margin: 10px 0;
-            padding-left: 20px;
-        }
-
-        .analysis li {
-            margin-bottom: 8px;
+        .content p {
+            margin-bottom: 25px;
         }
 
         .highlight {
-            background-color: #fff3cd;
-            padding: 2px 6px;
-            border-radius: 3px;
+            background: linear-gradient(135deg, #c8d6ff, #f1f4ff);
+            padding: 20px 30px;
+            border-radius: 15px;
+            margin: 20px 0;
             font-weight: bold;
+            border-left: 8px solid #192a56;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        .success {
-            color: #27ae60;
+        .highlight-red {
+            background: linear-gradient(135deg, #ffcccc, #ffe6e6);
+            padding: 20px 30px;
+            border-radius: 15px;
+            margin: 20px 0;
             font-weight: bold;
+            border-left: 8px solid #dc3545;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            color: #dc3545;
         }
 
-        .warning {
-            color: #e74c3c;
+        .points {
+            text-align: left;
+            margin: 40px auto;
+            max-width: 1000px;
+        }
+
+        .points li {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            padding-left: 20px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .points li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            color: #192a56;
             font-weight: bold;
         }
 
         .navigation {
-            text-align: center;
-            margin: 20px 0;
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            z-index: 100;
         }
 
-        .nav-btn {
-            padding: 10px 20px;
-            margin: 0 10px;
-            background-color: #3498db;
+        .nav-button {
+            background: #192a56;
             color: white;
             border: none;
-            border-radius: 5px;
+            padding: 12px 20px;
+            border-radius: 25px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-family: inherit;
         }
 
-        .nav-btn:hover {
-            background-color: #2980b9;
+        .nav-button:hover {
+            background: #2f3542;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
-        .nav-btn:disabled {
-            background-color: #bdc3c7;
+        .nav-button:disabled {
+            background: #cccccc;
             cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
         }
 
-        @media print {
-            .navigation { display: none; }
-            .page { box-shadow: none; margin-bottom: 0; }
+        .slide-counter {
+            background: rgba(25, 42, 86, 0.8);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin: 0 10px;
+        }
+
+        .emoji-icon {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .slide {
+                padding: 40px 20px 100px 20px;
+            }
+            
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            .content { font-size: 1.4rem; }
+            .points li { font-size: 1.3rem; }
         }
     </style>
 </head>
 <body>
-    <!-- 1ページ目: 概要とグラフ -->
-    <div class="page" id="page1">
-        <h1>未処理品番 処理進捗報告書</h1>
-        
-        <div class="summary">
-            <strong>【分析概要】</strong><br>
-            初期未処理2,600品番から開始し、月次176品番の純減ペースで処理を継続した場合の進捗予測を分析しました。
-            処理能力10品番/日（10品番で0.5H）、新規流入1.2品番/日、月次稼働20日の条件下での計算結果です。
+    <div class="slideshow-container">
+        <!-- スライド1: タイトル -->
+        <div class="slide active">
+            <h1>享栄高校硬式野球部OB・OG会</h1>
         </div>
 
-        <div class="key-result">
-            🎯 <span class="warning">2026年10月</span>に未処理品番ゼロ到達予定
+        <!-- スライド2: 私たちの使命 -->
+        <div class="slide">
+            <h2>OB・OG会の使命</h2>
+            <div class="content">
+                <div class="highlight">
+                    現役選手が甲子園という夢の舞台に立つための、最高の環境を整えること
+                </div>
+                <p>理想だけでは部は強くならない。精神的な応援も大切ですが、最新のバット一本、怪我を防ぐトレーニング機器一台が、試合の勝敗を分ける現実があります。</p>
+                <p><strong>私たちOB・OG一人ひとりの会費や寄付が、その一本、その一台に変わり、選手たちの夢を直接支える力となるのです。</strong></p>
+            </div>
         </div>
 
-        <div class="chart-container">
-            <div class="chart-title">■ 未処理品番 月次推移</div>
-            <canvas id="progressChart" width="800" height="300"></canvas>
+        <!-- スライド3: なぜ資金サポートが最重要なのか -->
+        <div class="slide">
+            <h2>なぜ資金サポートが最重要なのか</h2>
+            <div class="content">
+                <div class="highlight-red">
+                    <div style="font-size: 2rem; margin-bottom: 20px;">現役選手への直接的な資金支援</div>
+                    <p>これこそが私たちの最も重要な役割です。最新のトレーニング機材、質の高いボール・バット、栄養サプリメント、遠征費用、コンディション管理機器 — これらすべてが選手のパフォーマンス向上に直結します。</p>
+                    <p style="font-size: 2.2rem; color: #dc3545; font-weight: bold;">あなたの年会費5,000円が、200人が参加すれば100万円の強化資金となります。</p>
+                </div>
+            </div>
         </div>
 
-        <div class="analysis">
-            <h3>📊 分析結果</h3>
-            <ul>
-                <li><strong>処理期間：</strong>約<span class="highlight">15ヶ月</span>（2025年8月〜2026年10月）</li>
-                <li><strong>月次処理：</strong>200品番/月 - 24品番/月（新規）= <span class="success">176品番/月の純減</span></li>
-                <li><strong>最終月：</strong>2026年10月の<span class="success">16日稼働</span>でゼロ到達</li>
-                <li><strong>完了後：</strong>新規1.2品番/日の処理のみで安定運用可能</li>
-            </ul>
+        <!-- スライド4: その他の重要な役割 -->
+        <div class="slide">
+            <h2>その他の重要な役割</h2>
+            <div class="content">
+                <ul class="points">
+                    <li><strong>指導者との戦略的連携</strong><br>監督・コーチとの密接な情報共有により、本当に必要な設備投資を見極め、無駄のない効果的な資金活用を実現</li>
+                    <li><strong>勝利への伝統継承</strong><br>享栄野球部の「勝つための文化」を次世代に伝承。過去の成功体験を基に、現代に通用する戦略的投資を実行</li>
+                    <li><strong>資金調達ネットワーク構築</strong><br>様々な業界で活躍するOB・OGの力を結集し、持続可能な部活動運営のための資金基盤を構築</li>
+                </ul>
+            </div>
         </div>
 
-    </div>
-
-    <!-- 2ページ目: 詳細データ表 -->
-    <div class="page" id="page2" style="display:none;">
-        <h1>月次処理データ詳細</h1>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>処理月</th>
-                    <th>期首残<br>(品番)</th>
-                    <th>新規流入<br>(品番/月)</th>
-                    <th>処理実行<br>(品番/月)</th>
-                    <th>純減<br>(品番/月)</th>
-                    <th>期末残<br>(品番)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>2025-08</td><td>2,600</td><td>24.0</td><td>200</td><td>176.0</td><td>2,424</td></tr>
-                <tr><td>2025-09</td><td>2,424</td><td>24.0</td><td>200</td><td>176.0</td><td>2,248</td></tr>
-                <tr><td>2025-10</td><td>2,248</td><td>24.0</td><td>200</td><td>176.0</td><td>2,072</td></tr>
-                <tr><td>2025-11</td><td>2,072</td><td>24.0</td><td>200</td><td>176.0</td><td>1,896</td></tr>
-                <tr><td>2025-12</td><td>1,896</td><td>24.0</td><td>200</td><td>176.0</td><td>1,720</td></tr>
-                <tr><td>2026-01</td><td>1,720</td><td>24.0</td><td>200</td><td>176.0</td><td>1,544</td></tr>
-                <tr><td>2026-02</td><td>1,544</td><td>24.0</td><td>200</td><td>176.0</td><td>1,368</td></tr>
-                <tr><td>2026-03</td><td>1,368</td><td>24.0</td><td>200</td><td>176.0</td><td>1,192</td></tr>
-                <tr><td>2026-04</td><td>1,192</td><td>24.0</td><td>200</td><td>176.0</td><td>1,016</td></tr>
-                <tr><td>2026-05</td><td>1,016</td><td>24.0</td><td>200</td><td>176.0</td><td>840</td></tr>
-                <tr><td>2026-06</td><td>840</td><td>24.0</td><td>200</td><td>176.0</td><td>664</td></tr>
-                <tr><td>2026-07</td><td>664</td><td>24.0</td><td>200</td><td>176.0</td><td>488</td></tr>
-                <tr><td>2026-08</td><td>488</td><td>24.0</td><td>200</td><td>176.0</td><td>312</td></tr>
-                <tr><td>2026-09</td><td>312</td><td>24.0</td><td>200</td><td>176.0</td><td>136</td></tr>
-                <tr><td>2026-10</td><td>136</td><td>19.2</td><td>160</td><td>140.8</td><td>0</td></tr>
-            </tbody>
-        </table>
-
-        <div class="analysis">
-            <h3>📋 データ補足</h3>
-            <ul>
-                <li><strong>基本条件：</strong>処理能力10品番/日 × 稼働20日/月 = 200品番/月</li>
-                <li><strong>新規流入：</strong>1.2品番/日 × 稼働20日/月 = 24品番/月</li>
-                <li><strong>最終月：</strong>136品番÷8.8品番/日 = 15.5日 → 稼働16日で完了</li>
-            </ul>
+        <!-- スライド5: 参加することで得られる価値 -->
+        <div class="slide">
+            <h2>参加することで得られる価値</h2>
+            <div class="content">
+                <div class="highlight" style="margin: 15px 0; padding: 15px 20px;">
+                    <p style="font-size: 1.6rem; margin-bottom: 10px;"><strong>後輩たちの夢を直接サポートできる最高のやりがい</strong></p>
+                </div>
+                <ul class="points" style="margin: 20px auto; font-size: 1.4rem;">
+                    <li style="margin-bottom: 15px;"><strong>強固な人脈ネットワーク</strong> - 同窓生との貴重な出会い</li>
+                    <li style="margin-bottom: 15px;"><strong>野球への情熱継続</strong> - 現役時代の情熱維持と勝利の共有</li>
+                    <li style="margin-bottom: 15px;"><strong>母校の栄光への貢献</strong> - 母校発展を間近で見守る特権</li>
+                </ul>
+            </div>
         </div>
 
-        <div class="summary">
-            <strong>【結論】</strong><br>
-            現在の処理体制を維持した場合、<span class="warning">2026年10月16日稼働日</span>に未処理品番がゼロになる予定です。
-            以降は新規流入分（1.2品番/日）の処理のみで運用が継続できます。
+        <!-- スライド6: 資金活用の透明性と効果 -->
+        <div class="slide">
+            <h2>資金活用の透明性と効果</h2>
+            <div class="content">
+                <ul class="points" style="margin: 30px auto; font-size: 1.4rem;">
+                    <li style="margin-bottom: 20px;"><strong>予算の透明な運営</strong> - 年1回の総会で詳細報告、一円まで明確化</li>
+                    <li style="margin-bottom: 20px;"><strong>戦略的な資金投資</strong> - 監督・コーチとの協議で効果的な機材に集中投資</li>
+                    <li style="margin-bottom: 20px;"><strong>選手強化への直接投資</strong> - トレーニング機材、栄養管理、遠征費、最新用具購入</li>
+                    <li style="margin-bottom: 20px;"><strong>成果を共有する交流</strong> - 投資成果を実感できる懇親会や試合観戦会を開催</li>
+                </ul>
+            </div>
         </div>
-    </div>
 
-    <div class="navigation">
-        <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">← 前ページ</button>
-        <span id="pageInfo">1 / 2</span>
-        <button class="nav-btn" id="nextBtn" onclick="changePage(1)">次ページ →</button>
+        <!-- スライド7: 最終メッセージ -->
+        <div class="slide">
+            <h1>あなたの支援が、<br>未来の一打を創る。</h1>
+            <div class="content">
+                <div class="highlight">
+                    <p style="font-size: 2.2rem; margin-bottom: 20px;"><strong>一緒に母校の黄金時代を築きましょう。</strong></p>
+                    <p style="font-size: 1.8rem;">年会費5,000円から始められます。</p>
+                    <p style="font-size: 1.8rem;">あなたの支援が選手たちの汗と努力と組み合わさって、必ず甲子園への道を切り拓きます。</p>
+                </div>
+                <p style="font-style: italic; font-size: 2rem; margin-top: 30px; color: #192a56;">「理想だけでは勝てない。でも、みんなの力が集まれば必ず勝てる。」</p>
+            </div>
+        </div>
+
+        <!-- ナビゲーション -->
+        <div class="navigation">
+            <button class="nav-button" id="prevBtn" onclick="changeSlide(-1)">◀ 前へ</button>
+            <div class="slide-counter">
+                <span id="currentSlide">1</span> / <span id="totalSlides">7</span>
+            </div>
+            <button class="nav-button" id="nextBtn" onclick="changeSlide(1)">次へ ▶</button>
+        </div>
     </div>
 
     <script>
-        let currentPage = 1;
-        const totalPages = 2;
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        
+        document.getElementById('totalSlides').textContent = totalSlides;
 
-        function updatePage() {
-            document.getElementById('page1').style.display = currentPage === 1 ? 'block' : 'none';
-            document.getElementById('page2').style.display = currentPage === 2 ? 'block' : 'none';
-            document.getElementById('pageInfo').textContent = `${currentPage} / ${totalPages}`;
-            document.getElementById('prevBtn').disabled = currentPage === 1;
-            document.getElementById('nextBtn').disabled = currentPage === totalPages;
-            
-            if (currentPage === 1) {
-                setTimeout(drawChart, 100);
-            }
-        }
-
-        function changePage(direction) {
-            currentPage = Math.max(1, Math.min(totalPages, currentPage + direction));
-            updatePage();
-        }
-
-        function drawChart() {
-            const canvas = document.getElementById('progressChart');
-            if (!canvas) return;
-            
-            const ctx = canvas.getContext('2d');
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            const data = [2600, 2424, 2248, 2072, 1896, 1720, 1544, 1368, 1192, 1016, 840, 664, 488, 312, 136, 0];
-            const months = ['2025-08', '2025-09', '2025-10', '2025-11', '2025-12', '2026-01', '2026-02', '2026-03', '2026-04', '2026-05', '2026-06', '2026-07', '2026-08', '2026-09', '2026-10'];
-            
-            const padding = 60;
-            const chartWidth = canvas.width - padding * 2;
-            const chartHeight = canvas.height - padding * 2;
-            const maxValue = 2600;
-            const stepX = chartWidth / (data.length - 1);
-            
-            // グリッド線
-            ctx.strokeStyle = '#e0e0e0';
-            ctx.lineWidth = 1;
-            
-            for (let i = 0; i <= 5; i++) {
-                const y = padding + (chartHeight / 5) * i;
-                ctx.beginPath();
-                ctx.moveTo(padding, y);
-                ctx.lineTo(canvas.width - padding, y);
-                ctx.stroke();
-            }
-            
-            // Y軸目盛り
-            ctx.fillStyle = '#666';
-            ctx.font = '12px sans-serif';
-            ctx.textAlign = 'right';
-            
-            for (let i = 0; i <= 5; i++) {
-                const value = maxValue - (maxValue / 5) * i;
-                const y = padding + (chartHeight / 5) * i + 4;
-                ctx.fillText(value.toLocaleString(), padding - 10, y);
-            }
-            
-            // X軸目盛り
-            ctx.textAlign = 'center';
-            for (let i = 0; i < months.length; i += 3) {
-                const x = padding + stepX * i;
-                const y = canvas.height - padding + 15;
-                ctx.fillText(months[i], x, y);
-            }
-            
-            // データライン
-            ctx.strokeStyle = '#3498db';
-            ctx.lineWidth = 2;
-            ctx.beginPath();
-            
-            data.forEach((value, index) => {
-                const x = padding + stepX * index;
-                const y = padding + chartHeight - (value / maxValue) * chartHeight;
-                
-                if (index === 0) {
-                    ctx.moveTo(x, y);
-                } else {
-                    ctx.lineTo(x, y);
-                }
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
             });
             
-            ctx.stroke();
-            
-            // データポイント
-            ctx.fillStyle = '#2980b9';
-            data.forEach((value, index) => {
-                const x = padding + stepX * index;
-                const y = padding + chartHeight - (value / maxValue) * chartHeight;
-                
-                ctx.beginPath();
-                ctx.arc(x, y, 3, 0, 2 * Math.PI);
-                ctx.fill();
-            });
+            document.getElementById('currentSlide').textContent = index + 1;
+            document.getElementById('prevBtn').disabled = index === 0;
+            document.getElementById('nextBtn').disabled = index === totalSlides - 1;
+        }
+
+        function changeSlide(direction) {
+            const newIndex = currentSlideIndex + direction;
+            if (newIndex >= 0 && newIndex < totalSlides) {
+                currentSlideIndex = newIndex;
+                showSlide(currentSlideIndex);
+            }
         }
 
         // キーボードナビゲーション
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowLeft') changePage(-1);
-            if (e.key === 'ArrowRight') changePage(1);
+            if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                changeSlide(-1);
+            } else if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                changeSlide(1);
+            }
         });
 
         // 初期化
-        updatePage();
+        showSlide(0);
     </script>
 </body>
 </html>
