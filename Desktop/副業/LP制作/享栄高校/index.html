@@ -5,7 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>享栄高校硬式野球部OB・OG会 | 年会費納入のお手続き</title>
     <!-- Updated for scroll fix: 2025-01-14 -->
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Add basic styles for match result section */
+        .match-result {
+            padding: 60px 0;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #333;
+        }
+        .result-card {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .tournament-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2c5aa0;
+            margin-bottom: 20px;
+        }
+        .score-display {
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 30px 0;
+            color: #333;
+        }
+        .score {
+            color: #dc3545;
+            margin: 0 10px;
+        }
+        .support-message {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.6;
+            margin-top: 30px;
+        }
+    </style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
@@ -183,7 +231,7 @@
                             </div>
                         </div>
                         
-                        <button class="btn btn-primary btn-large plan-cta" onclick="scrollToBankInfo('membership')">
+                        <button class="btn btn-primary btn-large plan-cta" onclick="scrollToBankTransfer()">
                             年会費（5,000円）を振り込む
                         </button>
                     </div>
@@ -230,7 +278,7 @@
                             </div>
                         </div>
                         
-                        <button class="btn btn-accent btn-large plan-cta" onclick="scrollToBankInfo('support')">
+                        <button class="btn btn-accent btn-large plan-cta" onclick="scrollToBankTransfer()">
                             応援会費（一口1,000円〜）で支援する
                         </button>
                     </div>
@@ -447,7 +495,6 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
     <script>
         function scrollToMembership() {
             console.log('年会費ボタンクリック');
@@ -558,6 +605,16 @@
             });
         }
         
+        // 振込先セクションへのスクロール
+        function scrollToBankTransfer() {
+            var target = document.getElementById('bankTransferSection');
+            if (target) {
+                target.scrollIntoView({behavior: 'smooth', block: 'start'});
+                setTimeout(function() {
+                    window.scrollBy(0, -100);
+                }, 500);
+            }
+        }
         
     </script>
 </body>
