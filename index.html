@@ -213,12 +213,6 @@
             80%, 100% { opacity: 0; }
         }
         
-        /* 試合結果セクション */
-        .match-result {
-            padding: 80px 0;
-            background: var(--koei-blue-lighter);
-        }
-        
         .section-title {
             text-align: center;
             font-size: 2.8rem;
@@ -228,83 +222,25 @@
             font-weight: 700;
         }
         
-        .result-card {
-            background: var(--white);
-            padding: 50px;
-            border-radius: 20px;
-            box-shadow: var(--shadow-medium);
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto;
-            border: 3px solid var(--koei-blue);
-            position: relative;
-        }
-        
-        .result-card::before {
-            content: '';
-            position: absolute;
-            top: -3px;
-            left: -3px;
-            right: -3px;
-            bottom: -3px;
-            background: linear-gradient(45deg, var(--koei-blue), var(--accent-gold));
-            border-radius: 20px;
-            z-index: -1;
-        }
-        
-        .tournament-name {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--koei-blue);
-            margin-bottom: 25px;
-            font-family: "Noto Serif JP", serif;
-        }
-        
-        .score-display {
-            font-size: 3.5rem;
-            font-weight: 900;
-            margin: 40px 0;
-            color: var(--gray-dark);
-            font-family: "Noto Sans JP", sans-serif;
-        }
-        
-        .score {
-            color: var(--accent-orange);
-            margin: 0 15px;
-            text-shadow: 0 2px 5px rgba(255,107,53,0.3);
-        }
-        
-        .support-message {
-            font-size: 1.2rem;
-            color: var(--gray-medium);
-            line-height: 1.8;
-            margin-top: 35px;
-            font-weight: 500;
-            padding: 20px;
-            background: var(--gray-light);
-            border-radius: 15px;
-            border-left: 5px solid var(--koei-blue);
-        }
-        
         /* セクション */
         .purpose, .usage, .payment, .faq {
             padding: 80px 0;
         }
         
         .purpose {
-            background: var(--white);
+            background: var(--gray-light);
         }
         
         .usage {
-            background: var(--koei-blue-lighter);
-        }
-        
-        .payment {
             background: var(--white);
         }
         
+        .payment {
+            background: var(--gray-light);
+        }
+        
         .faq {
-            background: var(--koei-blue-lighter);
+            background: var(--white);
         }
         
         /* 目的セクション */
@@ -800,18 +736,6 @@
         </div>
     </section>
 
-    <section id="match-result" class="match-result">
-        <div class="container">
-            <h2 class="section-title">試合結果</h2>
-            <div class="result-card">
-                <div class="tournament-name">名古屋地区大会 決勝トーナメント</div>
-                <div class="score-display">
-                    <span>享栄</span> <span class="score">３</span> × <span class="score">４</span> <span>中京大中京</span>
-                </div>
-                <div class="support-message">皆様の温かいご声援、誠にありがとうございました。次戦も変わらぬ応援をよろしくお願いいたします。</div>
-            </div>
-        </div>
-    </section>
 
     <section id="purpose" class="purpose">
         <div class="container">
