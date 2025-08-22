@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI × LINEシステム構築代行 | 集客を自動運転で最大化</title>
+    <meta name="description" content="AI技術とLINE公式アカウントを活用したシステム構築代行サービス。最短2週間で集客の自動化を実現します。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap">
+    <meta name="theme-color" content="#2C4C3B">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+    <style>
+        :root {
+            --clr-main: #2C4C3B; /* 深めの緑 */
+            --clr-accent: #F0EDE6; /* 温かみのあるオフホワイト */
+            --clr-bg: #FAFAF9;   /* 純白に近いベース */
+            --clr-text: #2D2D2D;
+            --clr-card: #FFFFFF;
+            --clr-gray: #6B7280;
+            --border-radius: 12px;
+            --box-shadow: rgba(0, 0, 0, 0.03) 0px 4px 16px;
+            --box-shadow-hover: rgba(0, 0, 0, 0.08) 0px 8px 24px;
+            --section-padding: 120px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.7;
+            color: var(--clr-text);
+            background-color: var(--clr-bg);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* --- Header --- */
+        header {
+            background-color: var(--clr-main);
+            color: white;
+            padding: 120px 0 140px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            margin-bottom: 2rem;
+            line-height: 1.4;
+            letter-spacing: 0.02em;
+        }
+
+        .pain-points {
+            list-style: none;
+            margin: 2.5rem 0 3rem;
+            display: inline-block;
+            text-align: left;
+            max-width: 550px;
+        }
+
+        .pain-points li {
+            padding: 0.5rem 0;
+            padding-left: 2rem;
+            position: relative;
+            font-size: 1.05rem;
+        }
+
+        .pain-points li::before {
+            content: '✔';
+            position: absolute;
+            left: 0;
+            color: var(--clr-accent);
+            opacity: 0.8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: var(--clr-main);
+            padding: 18px 40px;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: var(--box-shadow);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background: var(--clr-bg);
+            transform: translateY(-2px);
+            box-shadow: var(--box-shadow-hover);
+        }
+
+        /* --- Sections --- */
+        section {
+            padding: var(--section-padding) 0;
+        }
+        section:nth-of-type(even) {
+            background-color: var(--clr-accent);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--clr-main);
+            letter-spacing: 0.02em;
+            line-height: 1.3;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            margin-bottom: 4rem;
+            color: var(--clr-gray);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* --- Card Grid Layout --- */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--clr-card);
+            padding: 3rem 2.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border: 1px solid rgba(44, 76, 59, 0.08);
+        }
+
+        .card:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: var(--box-shadow-hover);
+            border-color: rgba(44, 76, 59, 0.15);
+        }
+
+        .card .icon {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            color: var(--clr-main);
+            display: block;
+        }
+        
+        .card h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            color: var(--clr-main);
+            line-height: 1.4;
+        }
+        
+        .card p {
+            font-size: 1rem;
+            color: var(--clr-gray);
+            line-height: 1.7;
+            font-weight: 400;
+        }
+
+        /* --- LINE Effectiveness Section --- */
+        .effectiveness-card .stat {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--clr-main);
+            line-height: 1.2;
+        }
+        .effectiveness-card .stat-label {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--clr-gray);
+        }
+
+        /* --- Benefits Section --- */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .benefit-item {
+            background: var(--clr-card);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #eee;
+        }
+        
+        .benefit-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--box-shadow-hover);
+        }
+
+        .benefit-item .icon {
+            font-size: 2.5rem;
+            color: var(--clr-main);
+            flex-shrink: 0;
+        }
+        
+        .benefit-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--clr-main);
+        }
+        .benefit-item p {
+            font-size: 0.95rem;
+            color: var(--clr-gray);
+        }
+
+        /* --- Reasons Section --- */
+        .reasons-list {
+            max-width: 800px;
+            margin: 4rem auto 0;
+            counter-reset: reason-counter;
+        }
+
+        .reason-item {
+            background: var(--clr-card);
+            padding: 2rem 2.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 2rem;
+            position: relative;
+            border: 1px solid #eee;
+        }
+        
+        .reason-item::before {
+            counter-increment: reason-counter;
+            content: "0" counter(reason-counter);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--clr-main);
+            opacity: 0.2;
+            position: absolute;
+            top: 1.5rem;
+            left: 2rem;
+        }
+        
+        .reason-content {
+            padding-left: 3rem;
+        }
+
+        .reason-content h3 {
+            color: var(--clr-main);
+            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+        }
+
+        /* --- Flow Section --- */
+        .flow-steps {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1.5rem;
+            margin-top: 4rem;
+            position: relative;
+        }
+        
+        .flow-step {
+            text-align: center;
+            position: relative;
+            padding-top: 3rem;
+        }
+        
+        .flow-step .step-number {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 50px;
+            background-color: var(--clr-card);
+            color: var(--clr-main);
+            border: 2px solid var(--clr-main);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        .flow-step h4 {
+            color: var(--clr-main);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .flow-step p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        /* --- FAQ Section --- */
+        .faq-container {
+            max-width: 800px;
+            margin: 4rem auto 0;
+        }
+
+        .faq-item {
+            background: var(--clr-card);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-bottom: 1rem;
+            overflow: hidden;
+            border: 1px solid #eee;
+        }
+
+        .faq-item details summary {
+            padding: 1.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--clr-main);
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-item details summary::after {
+            content: '+';
+            font-size: 1.5rem;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item details[open] summary::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-item details div {
+            padding: 1.5rem;
+            color: var(--clr-gray);
+            line-height: 1.7;
+        }
+
+        /* --- Final CTA Section --- */
+        .final-cta {
+            background-color: var(--clr-main);
+            color: white;
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .final-cta h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: 0.02em;
+        }
+
+        .final-cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        /* --- Contact Form --- */
+        .contact-form {
+            max-width: 500px;
+            margin: 2rem auto 0;
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px 20px;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-family: inherit;
+            background: white;
+            color: var(--clr-text);
+            box-shadow: var(--box-shadow);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            box-shadow: var(--box-shadow-hover);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-form .cta-button {
+            width: 100%;
+            margin-top: 1rem;
+            justify-self: center;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: var(--clr-text);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-nav {
+            margin-bottom: 1rem;
+        }
+
+        .footer-nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1rem;
+            opacity: 0.8;
+        }
+
+        .footer-nav a:hover {
+            opacity: 1;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 1024px) {
+            :root {
+                --section-padding: 80px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                --section-padding: 60px;
+            }
+            
+            .container {
+                padding: 0 20px;
+            }
+
+            header {
+                padding: 80px 0 100px;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .flow-steps {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .pain-points {
+                text-align: center;
+            }
+
+            .pain-points li {
+                padding-left: 0;
+                font-size: 1rem;
+            }
+
+            .pain-points li::before {
+                position: static;
+                margin-right: 0.5rem;
+            }
+
+            .benefit-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .reason-item {
+                flex-direction: column;
+                padding: 1.5rem;
+            }
+
+            .reason-content {
+                padding-left: 0;
+            }
+
+            .reason-item::before {
+                position: static;
+                margin-bottom: 1rem;
+                opacity: 0.5;
+            }
+
+            .final-cta h2 {
+                font-size: 1.8rem;
+            }
+
+            .final-cta p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                padding: 2rem 1.5rem;
+            }
+
+            .cta-button {
+                padding: 15px 30px;
+                font-size: 1rem;
+            }
+
+            .contact-form {
+                padding: 0 20px;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                padding: 12px 16px;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>AI × LINEシステム構築で<br>集客を"自動運転"</h1>
+            <ul class="pain-points">
+                <li>新規顧客の獲得に時間とコストがかかりすぎている</li>
+                <li>既存顧客との継続的なコミュニケーションが取れていない</li>
+                <li>マーケティング業務に追われて本業に集中できない</li>
+            </ul>
+            <a href="#contact" class="cta-button">無料で相談する</a>
+        </div>
+    </header>
+
+    <main>
+        <section>
+            <div class="container">
+                <h2 class="section-title">こんな方におすすめ</h2>
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="icon">👔</div>
+                        <h3>経営者・起業家</h3>
+                        <p>限られたリソースで最大の効果を求める方。AIとLINEを活用して効率的な集客システムを構築したい経営者の方に最適です。</p>
+                    </div>
+                    <div class="card">
+                        <div class="icon">🏪</div>
+                        <h3>店舗経営者</h3>
+                        <p>実店舗を持つ事業者の方。顧客との継続的な関係構築と来店促進を自動化し、売上向上を実現したい方におすすめです。</p>
+                    </div>
+                    <div class="card">
+                        <div class="icon">💼</div>
+                        <h3>士業・コンサルタント</h3>
+                        <p>専門サービスを提供する方。信頼関係の構築と継続的な顧客フォローを効率化し、リピート率向上を目指す方に適しています。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <h2 class="section-title">LINEが効果的な理由3選</h2>
+                <div class="card-grid">
+                    <div class="card effectiveness-card">
+                        <div class="stat">92.5%</div>
+                        <div class="stat-label">普及率</div>
+                        <h3>圧倒的な普及率</h3>
+                        <p>日本国内でのLINE利用率は92.5%。ほぼ全ての人がスマートフォンに入れているアプリなので、新しいアプリをダウンロードしてもらう必要がありません。</p>
+                    </div>
+                    <div class="card effectiveness-card">
+                        <div class="icon">📧</div>
+                        <h3>高い開封率</h3>
+                        <p>メールの開封率が約20%に対し、LINEメッセージの開封率は約60%以上。重要な情報を確実に顧客に届けることができます。</p>
+                    </div>
+                    <div class="card effectiveness-card">
+                        <div class="icon">📱</div>
+                        <h3>使いやすさ</h3>
+                        <p>普段使い慣れたLINEなので、顧客にとって心理的ハードルが低く、気軽にコミュニケーションを取ってもらえます。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <h2 class="section-title">公式LINE導入で得られる5大メリット</h2>
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <div class="icon">🎯</div>
+                        <div>
+                            <h3>リード獲得の自動化</h3>
+                            <p>AIチャットボットが24時間365日、見込み顧客からの問い合わせに対応。深夜や休日でも商談機会を逃しません。</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="icon">🔄</div>
+                        <div>
+                            <h3>顧客フォローの効率化</h3>
+                            <p>購入後のアフターフォローやリピート促進メッセージを自動送信。手動での個別対応が不要になります。</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="icon">📊</div>
+                        <div>
+                            <h3>データ分析による改善</h3>
+                            <p>顧客の行動データを自動収集・分析。マーケティング戦略の改善点が明確になります。</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="icon">💰</div>
+                        <div>
+                            <h3>コスト削減効果</h3>
+                            <p>人件費や広告費を大幅に削減。ROI（投資対効果）が明確に可視化されます。</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="icon">⚡</div>
+                        <div>
+                            <h3>即時レスポンス</h3>
+                            <p>顧客からの質問に即座に回答。顧客満足度向上と機会損失の防止を実現します。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <h2 class="section-title">当社が選ばれる理由</h2>
+                <div class="reasons-list">
+                    <div class="reason-item">
+                        <div class="reason-content">
+                            <h3>AIコピーライティング技術</h3>
+                            <p>最新のAI技術を活用して、顧客の心に響く魅力的なメッセージを自動生成。コンバージョン率の高い文章作成を実現します。</p>
+                        </div>
+                    </div>
+                    <div class="reason-item">
+                        <div class="reason-content">
+                            <h3>ワンストップサービス</h3>
+                            <p>企画から構築、運用まで全てお任せ。複数の業者とやり取りする必要がなく、窓口が一本化されるため管理が簡単です。</p>
+                        </div>
+                    </div>
+                    <div class="reason-item">
+                        <div class="reason-content">
+                            <h3>月額固定の安心価格</h3>
+                            <p>成果報酬ではなく月額固定制なので、予算管理が簡単。追加費用の心配なく安心してご利用いただけます。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <h2 class="section-title">提供サービス</h2>
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="icon">⚙️</div>
+                        <h3>アカウント設定</h3>
+                        <p>LINE公式アカウントの開設から基本設定まで完全代行。プロフィール作成、メニュー設定、自動応答機能の構築を行います。</p>
+                    </div>
+                    <div class="card">
+                        <div class="icon">✍️</div>
+                        <h3>文章・資料作成</h3>
+                        <p>AIを活用した魅力的なメッセージ作成。ターゲットに響く文章やリッチメニュー、チラシデザインまで一括制作します。</p>
+                    </div>
+                    <div class="card">
+                        <div class="icon">📤</div>
+                        <h3>メッセージ送信設定</h3>
+                        <p>ステップメール配信やセグメント配信の設定。顧客の行動に応じた最適なタイミングでのメッセージ自動送信を実現します。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <h2 class="section-title">導入フロー（最短2週間）</h2>
+                <div class="flow-steps">
+                    <div class="flow-step">
+                        <div class="step-number">1</div>
+                        <h4>ヒアリング</h4>
+                        <p>現在の課題と目標を詳しくお聞きします</p>
+                    </div>
+                    <div class="flow-step">
+                        <div class="step-number">2</div>
+                        <h4>企画・提案</h4>
+                        <p>最適なシステム設計をご提案します</p>
+                    </div>
+                    <div class="flow-step">
+                        <div class="step-number">3</div>
+                        <h4>構築・設定</h4>
+                        <p>LINE公式アカウントとAIシステムを構築</p>
+                    </div>
+                    <div class="flow-step">
+                        <div class="step-number">4</div>
+                        <h4>テスト・調整</h4>
+                        <p>動作確認と最終調整を実施</p>
+                    </div>
+                    <div class="flow-step">
+                        <div class="step-number">5</div>
+                        <h4>運用開始</h4>
+                        <p>本格運用開始とサポート提供</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <h2 class="section-title">よくあるご質問</h2>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <details>
+                            <summary>導入にどのくらいの期間がかかりますか？</summary>
+                            <div>
+                                <p>最短2週間で導入可能です。お客様の業種や要望の複雑さによって期間は変動しますが、一般的には2-4週間程度で運用開始できます。ヒアリングから設定、テストまで全てサポートいたします。</p>
+                            </div>
+                        </details>
+                    </div>
+                    <div class="faq-item">
+                        <details>
+                            <summary>技術的な知識がなくても利用できますか？</summary>
+                            <div>
+                                <p>はい、全く問題ありません。設定から運用まで全て弊社で対応いたします。お客様は普段通りにLINEを使うだけで、自動的に集客システムが稼働します。操作方法についても丁寧にサポートいたします。</p>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="final-cta" id="contact">
+            <div class="container">
+                <h2>今すぐ始めて、集客を自動化しませんか？</h2>
+                <p>無料相談で、あなたのビジネスに最適なAI × LINEシステムをご提案します</p>
+                
+                <form id="contactForm" class="contact-form">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="お名前" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="メールアドレス" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" id="phone" name="phone" placeholder="電話番号（任意）">
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" placeholder="ご相談内容やご質問（任意）" rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="cta-button">無料で相談する</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <nav class="footer-nav">
+                <a href="#privacy">プライバシーポリシー</a>
+                <a href="#terms">利用規約</a>
+                <a href="#company">会社概要</a>
+            </nav>
+            <p>&copy; 2024 AI × LINEシステム構築サービス. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const phone = formData.get('phone') || '未入力';
+            const message = formData.get('message') || '特になし';
+            
+            const subject = encodeURIComponent('AI×LINEシステム構築のお問い合わせ');
+            const body = encodeURIComponent(
+                `お名前: ${name}\n` +
+                `メールアドレス: ${email}\n` +
+                `電話番号: ${phone}\n` +
+                `ご相談内容:\n${message}`
+            );
+            
+            window.location.href = `mailto:contact@example.com?subject=${subject}&body=${body}`;
+        });
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('a[href^="#"]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
